@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	${MAKE} -C libft
 	${MAKE} -C ${MLX_USED}
-	${CC} -g ${CFLAGS} ${MLX_FLAGS} -o ${NAME} ${OBJS} libft/libft.a ${INCS}
+	${CC} -g3 ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a ${INCS} ${MLX_FLAGS}
 
 clean:
 	${MAKE} -C ${LIBFTDIRNAME} clean
