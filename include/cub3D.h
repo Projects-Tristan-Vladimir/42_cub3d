@@ -1,6 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <mlx.h>
 # include <signal.h>
 # include <stdarg.h>
 # include <stdio.h>
@@ -11,32 +12,28 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include "libft.h"
+// # include "mlx.h"
 
-/* ********************* EXIT STATUS ********************* */
-
-// typedef enum s_exit_status
-// {
-// 	SUCCESS = 0,
-// 	FAILURE = 1,
-// 	MAJOR_FAILURE = 2,
-// 	CMD_NOT_FOUND = 127,
-// 	PGM_ABORTED = 132,
-// 	INVALID_EXIT = 255
-// }	t_exit_status;
+typedef struct	s_img_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img_data;
 
 /* ************** STRUCTURE PRINCIPALE ************** */
-// typedef struct s_sh
-// {
-// 	char			**env;
-// 	t_token			*token_lst;
-// 	t_cmd_line		*cmd_line_lst;
-// 	t_exit_status	exit_status;
-// 	char			*prompt;
-// 	int				p_index;
-// 	int				p_quote;
-// 	int				error;
-// 	int				has_pipe;
-// }	t_sh;
+typedef struct s_game
+{
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_img_data		img;
+	int				error;
+}	t_game;
+
+
+
+
 
 /* ********************* FUNCTIONS ********************* */
 
