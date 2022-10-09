@@ -15,7 +15,8 @@ NAME = cub3D
 
 #*********** SRC OBJ FILES ************
 
-SRCS = $(SRC_DIR)/main.c
+SRCS =	$(SRC_DIR)/main.c\
+		$(SRC_DIR)/parsing.c
 
 
 OBJS=$(SRCS:.c=.o)

@@ -62,17 +62,21 @@ void	use_minilibx(t_game *game)
 
 void init_variables(t_game *game)
 {
+	// ft_memset(game, 0, sizeof(game));
 	game->win_width = 1920;
 	game->win_length = 1080;
 }
 
 int main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
 	t_game	game;
-
+	printf("%d\n",argc);
+	if (argc != 2)
+		return (1);
 	init_variables(&game);
+	if (parse_map(&game, argv[1]))
+		return (1);
+
 	use_minilibx(&game);
 	return (0);
 }
