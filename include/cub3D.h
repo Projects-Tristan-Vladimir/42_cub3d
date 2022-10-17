@@ -41,6 +41,9 @@ typedef struct s_game
 
 /* ********* INITIALIZATION ********* */
 
+/* ********* PARSING ********* */
+int	parse_map(t_game *game, char *filename);
+
 /* ********* ERRORS ********* */
 
 /* ********* UTILS ********* */
