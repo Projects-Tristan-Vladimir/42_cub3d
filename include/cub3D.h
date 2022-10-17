@@ -28,6 +28,8 @@ typedef struct s_game
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_img_data		img;
+	int				win_width;
+	int				win_length;
 	int				error;
 }	t_game;
 
