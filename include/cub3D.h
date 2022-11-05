@@ -30,6 +30,7 @@ typedef struct s_game
 	t_img_data		img;
 	int				win_width;
 	int				win_length;
+	char			*map;
 	int				error;
 }	t_game;
 

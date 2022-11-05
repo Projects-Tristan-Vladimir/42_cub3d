@@ -2,6 +2,7 @@
 
 int	open_file_check(int fd, char *filename)
 {
+	
 	if (fd == -1)
 	{
 		ft_putstr_fd(filename, 2);
@@ -21,24 +22,29 @@ int	parse_map(t_game *game, char *filename)
 	int		fd;
 	char	*data;
 	ssize_t	count;
-	(void)game;
+
 	//0) check if file is readable
 	fd = open(filename, O_RDONLY);
 	if (open_file_check(fd, filename))
 		return (1);
 
 	//1) Read file data
-	data = NULL;
-	count = read(fd, data, 2000);
-
-	printf("%s\n", data);
+	data = ft_calloc(1000, sizeof(char));
+	count = read(fd, data, 1000);
+	if (count < 0)
+	{
+		printf("errno=%d\n", errno);
+		printf("read error : %s\n", strerror(errno));
+	}
 	//2) check if all requirements are in file
 
 	//3) check if map is valid
 
 	//4) store data in variables
 		//4-a) store map data
+		game->map = ft_strdup(data);
+		printf("%s", game->map);
 
-
+		
 	return (0);
 }

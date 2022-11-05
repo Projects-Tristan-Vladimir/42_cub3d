@@ -4,9 +4,8 @@ void	ft_mlx_pixel_put(t_img_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
-	// the bytes are not aligned, this means that the line_length differs from the actual window width.
-	// We therefore should ALWAYS calculate the memory offset using the line length set by mlx_get_data_addr.
-	// int offset/index = (y * line_length + x * (bits_per_pixel / 8));
+	//understand how to retrieve the right address : 
+	//https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx#Finding-the-pixels-first-bytes-address 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
@@ -70,7 +69,7 @@ void init_variables(t_game *game)
 int main(int argc, char **argv)
 {
 	t_game	game;
-	printf("%d\n",argc);
+	printf("count args=%d\n",argc);
 	if (argc != 2)
 		return (1);
 	init_variables(&game);
