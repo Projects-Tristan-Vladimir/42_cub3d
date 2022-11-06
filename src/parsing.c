@@ -17,7 +17,8 @@ int	open_file_check(int fd, char *filename)
 	return (0);
 }
 
-void	update_player_pos(t_game *game)
+// coordonnées (de départ pour l'instant) du joueur
+void	update_player_position(t_game *game)
 {
 	int	i;
 	int	j;
@@ -40,14 +41,21 @@ void	update_player_pos(t_game *game)
 	}
 }
 
+// composants du vecteur direction du joueur
+void	update_player_direction(t_game *game)
+{
+	game->player_dir[0] = 1;
+	game->player_dir[1] = 0;
+}
+
 void	update_map_details(t_game *game)
 {
 	//count map rows and columns
 	while (game->map[game->nb_rows])
 		game->nb_rows++;
 	game->nb_cols = (int)ft_strlen(game->map[0]);
-	
-	update_player_pos(game);
+	update_player_direction(game);
+	update_player_position(game);
 }
 
 int	parse_map(t_game *game, char *filename)

@@ -16,7 +16,7 @@ void	update_window(t_game *game)
 	int	y;
 
 	x = 120;
-	while (x < game->win_width)
+	while (x < SCREEN_WIDTH)
 	{
 		y = 20;
 		while (y < 40)
@@ -41,9 +41,9 @@ void	init_mlx(t_game *game)
 	}
 
 	//https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx#Screen-metrics
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->win_width, game->win_length, "my game");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT, "my game");
 	// drawing img on screen : https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx#Using-minilibx-images-to-draw-on-the-screen
-	game->img.img = mlx_new_image(game->mlx_ptr, game->win_width, game->win_length);
+	game->img.img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel, &game->img.line_length, &game->img.endian);
 	printf("img data: bits_per_pixel=%d, line_length=%d, endian=%d\n",
 		game->img.bits_per_pixel,
@@ -62,8 +62,6 @@ void	use_minilibx(t_game *game)
 void init_variables(t_game *game)
 {
 	// ft_memset(game, 0, sizeof(game));
-	game->win_width = 1920;
-	game->win_length = 1080;
 	game->nb_cols = 0;
 	game->nb_rows = 0;
 }
@@ -78,6 +76,7 @@ void print_map_details(t_game *game)
 	}
 	printf("nb_rows=%d, nb_cols=%d\n", game->nb_rows, game->nb_cols);
 	printf("player position=[%d,%d]\n", game->player_pos[0], game->player_pos[1]);
+	printf("player direction vector=(%d,%d)\n", game->player_dir[0], game->player_dir[1]);
 }
 
 int main(int argc, char **argv)
