@@ -64,18 +64,34 @@ void init_variables(t_game *game)
 	// ft_memset(game, 0, sizeof(game));
 	game->win_width = 1920;
 	game->win_length = 1080;
+	game->nb_cols = 0;
+	game->nb_rows = 0;
+}
+
+void print_map_details(t_game *game)
+{
+	int i = 0;
+	while (game->map[i])
+	{
+		printf("%s\n", game->map[i]);
+		i++;
+	}
+	printf("nb_rows=%d, nb_cols=%d\n", game->nb_rows, game->nb_cols);
+	printf("player position=[%d,%d]\n", game->player_pos[0], game->player_pos[1]);
 }
 
 int main(int argc, char **argv)
 {
 	t_game	game;
-	printf("count args=%d\n",argc);
 	if (argc != 2)
+	{
+		printf("no map provided in argument\n");	
 		return (1);
+	}
 	init_variables(&game);
 	if (parse_map(&game, argv[1]))
 		return (1);
-
+	print_map_details(&game);
 	use_minilibx(&game);
 	return (0);
 }

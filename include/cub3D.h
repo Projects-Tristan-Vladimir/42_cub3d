@@ -30,11 +30,21 @@ typedef struct s_game
 	t_img_data		img;
 	int				win_width;
 	int				win_length;
-	char			*map;
+	char			**map;
+	int				nb_rows;
+	int				nb_cols;
+	int				player_pos[2];
 	int				error;
 }	t_game;
 
+//******************** DEFINE KEYS ********************//
 
+# define KEY_ESC	53
+# define KEY_UP	13
+# define KEY_RIGHT 2
+# define KEY_DOWN 	1
+# define KEY_LEFT 	0
+# define RED_CROSS	17
 
 
 
